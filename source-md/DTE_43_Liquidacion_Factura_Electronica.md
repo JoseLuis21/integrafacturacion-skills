@@ -1,6 +1,6 @@
 # DTE 43 - Liquidacion Factura Electronica
 
-Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTypes_v10.xsd` + firma desde `xmldsignature_v10.xsd`.
+Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTypes_v10.xsd`.
 
 ## Cómo leer este archivo
 
@@ -145,56 +145,3 @@ Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTyp
 | DTE/Liquidacion/Comisiones/ValComNeto | SiiDte:ValorType | Sí | 1..1 | xs:integer | - | - | - | - | [DTE choice opción 2: Liquidacion] Valor Neto Comisiones y Otros Cargos | totalDigits=18; Monto de 18 digitos - Positivo o Negativo |
 | DTE/Liquidacion/Comisiones/ValComExe | SiiDte:ValorType | Sí | 1..1 | xs:integer | - | - | - | - | [DTE choice opción 2: Liquidacion] Val. Comis. y Otros Cargos no Afectos o Exentos | totalDigits=18; Monto de 18 digitos - Positivo o Negativo |
 | DTE/Liquidacion/Comisiones/ValComIVA | SiiDte:ValorType | No | 0..1 | xs:integer | - | - | - | - | [DTE choice opción 2: Liquidacion] Valor IVA Comisiones y Otros Cargos | totalDigits=18; Monto de 18 digitos - Positivo o Negativo |
-| DTE/Liquidacion/TED | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Timbre Electronico de DTE | - |
-| DTE/Liquidacion/TED/@version | anonymous | Sí | - | - | - | - | - | - | [DTE choice opción 2: Liquidacion] | valor fijo: 1.0 |
-| DTE/Liquidacion/TED/DD | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Datos Basicos de Documento | - |
-| DTE/Liquidacion/TED/DD/RE | SiiDte:RUTType | Sí | 1..1 | xs:string | 3 | 10 | - | [0-9]+-([0-9]\|K) | [DTE choice opción 2: Liquidacion] RUT Emisor | Rol Unico Tributario (99..99-X) |
-| DTE/Liquidacion/TED/DD/TD | SiiDte:LIQType | Sí | 1..1 | xs:positiveInteger | - | - | - | 43 | [DTE choice opción 2: Liquidacion] Tipo DTE | Tipos de Liquidaciones |
-| DTE/Liquidacion/TED/DD/F | SiiDte:FolioType | Sí | 1..1 | xs:positiveInteger | - | - | - | - | [DTE choice opción 2: Liquidacion] Folio DTE | totalDigits=10; Folio de DTE - 10 digitos |
-| DTE/Liquidacion/TED/DD/FE | SiiDte:FechaType | Sí | 1..1 | xs:date | 2000-01-01 | 2050-12-31 | - | - | [DTE choice opción 2: Liquidacion] Fecha Emision DTE en Formato AAAA-MM-DD | Fecha entre 2000-01-01 y 2050-12-31 |
-| DTE/Liquidacion/TED/DD/RR | SiiDte:RUTType | Sí | 1..1 | xs:string | 3 | 10 | - | [0-9]+-([0-9]\|K) | [DTE choice opción 2: Liquidacion] RUT Receptor | Rol Unico Tributario (99..99-X) |
-| DTE/Liquidacion/TED/DD/RSR | anonymous | Sí | 1..1 | xs:string | 1 | 40 | - | - | [DTE choice opción 2: Liquidacion] Razon Social Receptor | - |
-| DTE/Liquidacion/TED/DD/MNT | SiiDte:ValorType | Sí | 1..1 | xs:integer | - | - | - | - | [DTE choice opción 2: Liquidacion] Monto Total DTE | totalDigits=18; Monto de 18 digitos - Positivo o Negativo |
-| DTE/Liquidacion/TED/DD/IT1 | anonymous | Sí | 1..1 | xs:string | 1 | 40 | - | - | [DTE choice opción 2: Liquidacion] Descripcion Primer Item de Detalle | - |
-| DTE/Liquidacion/TED/DD/CAF | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Codigo Autorizacion Folios | - |
-| DTE/Liquidacion/TED/DD/CAF/@version | anonymous | Sí | - | - | - | - | - | - | [DTE choice opción 2: Liquidacion] | valor fijo: 1.0 |
-| DTE/Liquidacion/TED/DD/CAF/DA | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Datos de Autorizacion de Folios | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/RE | SiiDte:RUTType | Sí | 1..1 | xs:string | 3 | 10 | - | [0-9]+-([0-9]\|K) | [DTE choice opción 2: Liquidacion] RUT Emisor | Rol Unico Tributario (99..99-X) |
-| DTE/Liquidacion/TED/DD/CAF/DA/RS | SiiDte:RznSocCortaType | Sí | 1..1 | xs:string | 1 | 40 | - | - | [DTE choice opción 2: Liquidacion] Razon Social Emisor | Razón Social (max 40) |
-| DTE/Liquidacion/TED/DD/CAF/DA/TD | SiiDte:LIQType | Sí | 1..1 | xs:positiveInteger | - | - | - | 43 | [DTE choice opción 2: Liquidacion] Tipo DTE | Tipos de Liquidaciones |
-| DTE/Liquidacion/TED/DD/CAF/DA/RNG | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Rango Autorizado de Folios | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/RNG/D | SiiDte:FolioType | Sí | 1..1 | xs:positiveInteger | - | - | - | - | [DTE choice opción 2: Liquidacion] Folio Inicial (Desde) | totalDigits=10; Folio de DTE - 10 digitos |
-| DTE/Liquidacion/TED/DD/CAF/DA/RNG/H | SiiDte:FolioType | Sí | 1..1 | xs:positiveInteger | - | - | - | - | [DTE choice opción 2: Liquidacion] Folio Final (Hasta) | totalDigits=10; Folio de DTE - 10 digitos |
-| DTE/Liquidacion/TED/DD/CAF/DA/FA | SiiDte:FechaType | Sí | 1..1 | xs:date | 2000-01-01 | 2050-12-31 | - | - | [DTE choice opción 2: Liquidacion] Fecha Autorizacion en Formato AAAA-MM-DD | Fecha entre 2000-01-01 y 2050-12-31 |
-| DTE/Liquidacion/TED/DD/CAF/DA/RSAPK | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 1: RSAPK] Clave Publica RSA del Solicitante | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/RSAPK/M | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 1: RSAPK] Modulo RSA | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/RSAPK/E | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 1: RSAPK] Exponente RSA | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/DSAPK | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 2: DSAPK] Clave Publica DSA del Solicitante | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/DSAPK/P | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 2: DSAPK] Modulo Primo | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/DSAPK/Q | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 2: DSAPK] Entero Divisor de P - 1 | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/DSAPK/G | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 2: DSAPK] Entero f(P, Q) | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/DSAPK/Y | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Liquidacion/TED/DD/CAF/DA choice opción 2: DSAPK] G**X mod P | - |
-| DTE/Liquidacion/TED/DD/CAF/DA/IDK | xs:long | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Identificador de Llave | - |
-| DTE/Liquidacion/TED/DD/CAF/FRMA | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Firma Digital (RSA) del SII Sobre DA | - |
-| DTE/Liquidacion/TED/DD/TSTED | SiiDte:FechaHoraType | Sí | 1..1 | xs:dateTime | 2000-01-01T00:00:00 | 2050-12-31T23:59:59 | - | - | [DTE choice opción 2: Liquidacion] TimeStamp de Generacion del Timbre | FechaType + hora entre 00:00 y 23:59; |
-| DTE/Liquidacion/TED/FRMT | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 2: Liquidacion] Valor de Firma Digital sobre DD | - |
-| DTE/Liquidacion/TmstFirma | SiiDte:FechaHoraType | Sí | 1..1 | xs:dateTime | 2000-01-01T00:00:00 | 2050-12-31T23:59:59 | - | - | [DTE choice opción 2: Liquidacion] Fecha y Hora en que se Firmo Digitalmente el Documento AAAA-MM-DDTHH:MI:SS | FechaType + hora entre 00:00 y 23:59; |
-| DTE/Signature | xmldsig:SignatureType | Sí | 1..1 | - | - | - | - | - | Firma Digital sobre Documento \| Firma Digital sobre Documento | - |
-| DTE/Signature/SignedInfo | anonymous | Sí | 1..1 | - | - | - | - | - | Descripcion de la Informacion Firmada y del Metodo de Firma | - |
-| DTE/Signature/SignedInfo/CanonicalizationMethod | anonymous | Sí | 1..1 | - | - | - | - | - | Algoritmo de Canonicalizacion | - |
-| DTE/Signature/SignedInfo/CanonicalizationMethod/@Algorithm | ds:anyURI | Sí | - | - | - | - | - | - | - | valor fijo: http://www.w3.org/TR/2001/REC-xml-c14n-20010315 |
-| DTE/Signature/SignedInfo/SignatureMethod | anonymous | Sí | 1..1 | - | - | - | - | - | Algoritmo de Firma | - |
-| DTE/Signature/SignedInfo/SignatureMethod/@Algorithm | anonymous | Sí | - | ds:anyURI | - | - | - | http://www.w3.org/2000/09/xmldsig#rsa-sha1, http://www.w3.org/2000/09/xmldsig#dsa-sha1 | - | - |
-| DTE/Signature/SignedInfo/Reference | anonymous | Sí | 1..1 | - | - | - | - | - | Referencia a Elemento Firmado | - |
-| DTE/Signature/SignedInfo/Reference/@URI | ds:anyURI | Sí | - | - | - | - | - | - | - | - |
-| DTE/Signature/SignedInfo/Reference/Transforms | anonymous | No | 0..1 | - | - | - | - | - | Algoritmo de Transformacion | - |
-| DTE/Signature/SignedInfo/Reference/Transforms/Transform | anonymous | Sí | 1..1 | - | - | - | - | - | - | - |
-| DTE/Signature/SignedInfo/Reference/Transforms/Transform/@Algorithm | ds:anyURI | Sí | - | - | - | - | - | - | - | - |
-| DTE/Signature/SignedInfo/Reference/DigestMethod | anonymous | Sí | 1..1 | - | - | - | - | - | Algoritmo de Digest | - |
-| DTE/Signature/SignedInfo/Reference/DigestMethod/@Algorithm | ds:anyURI | Sí | - | - | - | - | - | - | - | valor fijo: http://www.w3.org/2000/09/xmldsig#sha1 |
-| DTE/Signature/SignedInfo/Reference/DigestValue | ds:base64Binary | Sí | 1..1 | - | - | - | - | - | Valor de Digest | - |
-| DTE/Signature/SignatureValue | ds:base64Binary | Sí | 1..1 | - | - | - | - | - | Valor de la Firma Digital | - |
-| DTE/Signature/KeyInfo | anonymous | Sí | 1..1 | - | - | - | - | - | Informacion de Claves Publicas y Certificado | - |
-| DTE/Signature/KeyInfo/KeyValue | anonymous | Sí | 1..1 | - | - | - | - | - | - | - |
-| DTE/Signature/KeyInfo/X509Data | anonymous | Sí | 1..1 | - | - | - | - | - | Informacion del Certificado Publico | - |
-| DTE/Signature/KeyInfo/X509Data/X509Certificate | ds:base64Binary | Sí | 1..1 | - | - | - | - | - | Certificado Publico | - |

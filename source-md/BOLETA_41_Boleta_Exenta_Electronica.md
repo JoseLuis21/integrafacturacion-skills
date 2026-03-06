@@ -1,17 +1,15 @@
-# Boleta 39 - Boleta Electrónica
+# Boleta 41 - Boleta Exenta Electrónica
 
-- **Tipo DTE:** `39`
-- **Nombre:** Boleta Electrónica
-- **Fuente:** `EnvioBOLETA_v11.xsd` + `xmldsignature_v10.xsd`
-- **Nota:** la estructura del XSD para boleta `39` y `41` es la misma; la diferencia explícita del schema es el valor permitido de `Documento/Encabezado/IdDoc/TipoDTE` y los nodos TED/CAF relacionados.
+- **Tipo DTE:** `41`
+- **Nombre:** Boleta Exenta Electrónica
+- **Fuente:** `EnvioBOLETA_v11.xsd`
+- **Nota:** la estructura del XSD para boleta `39` y `41` es la misma; la diferencia explícita del schema es el valor permitido de `Documento/Encabezado/IdDoc/TipoDTE`.
 
 ## Restricción específica del tipo
 
 | Campo | Regla |
 |---|---|
-| `Documento/Encabezado/IdDoc/TipoDTE` | Debe ser `39` |
-| `Documento/TED/DD/TD` | Debe ser `39` |
-| `Documento/TED/DD/CAF/DA/TD` | Debe ser `39` |
+| `Documento/Encabezado/IdDoc/TipoDTE` | Debe ser `41` |
 
 ## Campos
 
@@ -20,7 +18,7 @@
 | `Documento` | `complexType` | Sí | `1..1` | — | — | — | — | Informacion Tributaria de la Boleta | — |
 | `Documento/Encabezado` | `complexType` | Sí | `1..1` | — | — | — | — | Identificacion y Totales del Documento | — |
 | `Documento/Encabezado/IdDoc` | `complexType` | Sí | `1..1` | — | — | — | — | Identificacion del DTE | — |
-| `Documento/Encabezado/IdDoc/TipoDTE` | `DTEType` | Sí | `1..1` | — | — | — | — | Tipo de Boleta | valor esperado en este documento: 39 |
+| `Documento/Encabezado/IdDoc/TipoDTE` | `DTEType` | Sí | `1..1` | — | — | — | — | Tipo de Boleta | valor esperado en este documento: 41 |
 | `Documento/Encabezado/IdDoc/Folio` | `FolioType` | Sí | `1..1` | — | — | 10 | — | Folio del Documento Electronico | — |
 | `Documento/Encabezado/IdDoc/FchEmis` | `date` | Sí | `1..1` | — | — | — | — | Fecha Emision Contable del DTE (AAAA-MM-DD) | — |
 | `Documento/Encabezado/IdDoc/IndServicio` | `positiveInteger` | Sí | `1..1` | — | — | — | — | Indica el Tipo de Transaccion | enum: 1, 2, 3, 4 |
@@ -118,34 +116,7 @@
 | `Documento/GeoRefEmision/LatitudEmision` | `string` | Sí | `1..1` | — | 30 | — | — | Latitud | — |
 | `Documento/GeoRefEmision/LongitudEmision` | `string` | Sí | `1..1` | — | 30 | — | — | Longitud | — |
 | `Documento/GeoRefEmision/SistemaReferencia` | `positiveInteger` | Sí | `1..1` | — | 9 | — | — | Sistema de Referencia | — |
-| `Documento/TED` | `complexType` | Sí | `1..1` | — | — | — | — | Timbre Electronico de la Boleta | — |
-| `Documento/TED/DD` | `complexType` | Sí | `1..1` | — | — | — | — | Datos Basicos de Documento | — |
-| `Documento/TED/DD/RE` | `RUTType` | Sí | `1..1` | 3 | 10 | — | — | RUT Emisor | pattern: [0-9]+-([0-9]\|K) |
-| `Documento/TED/DD/TD` | `DTEType` | Sí | `1..1` | — | — | — | — | Tipo DTE | valor esperado en este documento: 39 |
-| `Documento/TED/DD/F` | `FolioType` | Sí | `1..1` | — | — | 10 | — | Folio DTE | — |
-| `Documento/TED/DD/FE` | `date` | Sí | `1..1` | — | — | — | — | Fecha Emision DTE en Formato AAAA-MM-DD | — |
-| `Documento/TED/DD/RR` | `RUTType` | Sí | `1..1` | 3 | 10 | — | — | RUT Receptor | pattern: [0-9]+-([0-9]\|K) |
-| `Documento/TED/DD/RSR` | `string` | Sí | `1..1` | — | 40 | — | — | Razon Sociall Receptor | — |
-| `Documento/TED/DD/MNT` | `unsignedLong` | Sí | `1..1` | — | — | — | — | Monto Total DTE | — |
-| `Documento/TED/DD/IT1` | `string` | Sí | `1..1` | — | 40 | — | — | Descripcion Primer Item de Detalle | — |
-| `Documento/TED/DD/CAF` | `complexType` | Sí | `1..1` | — | — | — | — | Codigo Autorizacion Folios | — |
-| `Documento/TED/DD/CAF/DA` | `complexType` | Sí | `1..1` | — | — | — | — | Datos de Autorizacion de Folios | — |
-| `Documento/TED/DD/CAF/DA/RE` | `RUTType` | Sí | `1..1` | 3 | 10 | — | — | RUT Emisor | pattern: [0-9]+-([0-9]\|K) |
-| `Documento/TED/DD/CAF/DA/RS` | `string` | Sí | `1..1` | — | 40 | — | — | Razon Social Emisor | — |
-| `Documento/TED/DD/CAF/DA/TD` | `DTEType` | Sí | `1..1` | — | — | — | — | Tipo DTE | valor esperado en este documento: 39 |
-| `Documento/TED/DD/CAF/DA/RNG` | `complexType` | Sí | `1..1` | — | — | — | — | Rango Autorizado de Folios | — |
-| `Documento/TED/DD/CAF/DA/RNG/D` | `FolioType` | Sí | `1..1` | — | — | 10 | — | Folio Inicial (Desde) | — |
-| `Documento/TED/DD/CAF/DA/RNG/H` | `FolioType` | Sí | `1..1` | — | — | 10 | — | Folio Final (Hasta) | — |
-| `Documento/TED/DD/CAF/DA/FA` | `date` | Sí | `1..1` | — | — | — | — | Fecha Autorizacion en Formato AAAA-MM-DD | — |
-| `Documento/TED/DD/CAF/DA/IDK` | `long` | Sí | `1..1` | — | — | — | — | Identificador de Llave | — |
-| `Documento/TED/DD/CAF/FRMA` | `complexType` | Sí | `1..1` | — | — | — | — | Firma Digital (RSA) del SII Sobre DA | — |
-| `Documento/TED/DD/CAF/@version` | `attribute` | Sí | `1..1` | — | — | — | — | Atributo XML | fixed: 1.0 |
-| `Documento/TED/DD/TSTED` | `dateTime` | Sí | `1..1` | — | — | — | — | TimeStamp de Generacion del Timbre | — |
-| `Documento/TED/FRMT` | `complexType` | Sí | `1..1` | — | — | — | — | Valor de Firma Digital sobre DD | — |
-| `Documento/TED/@version` | `attribute` | Sí | `1..1` | — | — | — | — | Atributo XML | fixed: 1.0 |
-| `Documento/TmstFirma` | `dateTime` | Sí | `1..1` | — | — | — | — | Fecha y Hora en que se Firmo Digitalmente el Documento AAAA-MM-DDTHH:MI:SS | — |
 | `Documento/@ID` | `ID` | Sí | `1..1` | — | — | — | — | Atributo XML | — |
-| `ds:Signature` | `complexType` | Sí | `1..1` | — | — | — | — | — | — |
 | `@version` | `decimal` | Sí | `1..1` | — | — | — | — | Atributo XML | fixed: 1.0 |
 
 ## Tipos base relevantes
@@ -169,5 +140,4 @@
 - `Documento/SubTotInfo` permite hasta **20** repeticiones.
 - `Documento/DscRcgGlobal` permite hasta **20** repeticiones.
 - `Documento/Referencia` permite hasta **40** repeticiones.
-- `Documento` incluye `TED`, `TmstFirma` y `ds:Signature` dentro del mismo DTE.
 - Este material documenta restricciones del **XSD**; no reemplaza validaciones de negocio del SII que no estén modeladas directamente en el schema.

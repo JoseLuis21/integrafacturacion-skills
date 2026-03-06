@@ -1,0 +1,23 @@
+{
+  "skill_name": "integrafacturacion-skills",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Necesito emitir una factura electrónica 33 en integrafacturacion.cl. Dame el endpoint, headers y un payload JSON base usando user_id, business_id y data_dte_json.",
+      "expected_output": "Debe usar POST /documents/, incluir x-api-key e idempotency-key, code_sii 33 y un payload coherente con factura 33.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Qué endpoint uso para consultar el último folio usado de una guía de despacho 52 en IntegraFacturacion y qué parámetro tengo que mandar?",
+      "expected_output": "Debe responder GET /numerations/last-used-number?code_sii=52 e indicar el header x-api-key.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Revísame este caso: quiero armar una boleta 39 para integrafacturacion.cl y no sé qué campos mínimos del Encabezado y Detalle necesito. Responde usando los archivos SII del proyecto, sin TED ni firma.",
+      "expected_output": "Debe apoyarse en el archivo de boleta 39 y listar campos mínimos del documento, sin incluir TED ni Signature.",
+      "files": []
+    }
+  ]
+}

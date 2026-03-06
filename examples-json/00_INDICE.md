@@ -4,7 +4,6 @@ Estos archivos son ejemplos **de negocio** basados en los XSD que subiste.
 
 Criterios usados:
 - se incluyen campos razonables y frecuentes
-- no se incluye `TED` ni `Signature`
 - en documentos afectos se agregó una variante `solo_afecto` y otra `mixto_afecto_exento` cuando aplica
 - los valores son de ejemplo y deben reemplazarse por datos reales
 

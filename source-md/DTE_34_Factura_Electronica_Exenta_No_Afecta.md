@@ -1,6 +1,6 @@
-# DTE 56 - Nota de Debito Electronica
+# DTE 34 - Factura Electronica Exenta No Afecta
 
-Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTypes_v10.xsd` + firma desde `xmldsignature_v10.xsd`.
+Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTypes_v10.xsd`.
 
 ## Cómo leer este archivo
 
@@ -12,9 +12,9 @@ Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTyp
 
 ## Notas
 
-- Este archivo corresponde específicamente al **TipoDTE 56 (Nota de Debito Electronica)**.
+- Este archivo corresponde específicamente al **TipoDTE 34 (Factura Electronica Exenta No Afecta)**.
 - La estructura base proviene de la rama **Documento** del `choice` principal del `DTE_v10.xsd`.
-- El campo `TipoDTE` fue acotado en esta documentación al valor **56**.
+- El campo `TipoDTE` fue acotado en esta documentación al valor **34**.
 - Las reglas de “requerido / opcional” aquí reflejan lo que exige el **XSD**. Si el SII tiene validaciones de negocio adicionales por tipo de documento, esas no siempre quedan expresadas en el esquema.
 
 - Esta variante corresponde a la estructura general del DTE usada por documentos como factura, guía, nota de débito y nota de crédito según el tipo permitido por el esquema.
@@ -29,7 +29,7 @@ Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTyp
 | DTE/Documento/@ID | xs:ID | Sí | - | - | - | - | - | - | [DTE choice opción 1: Documento] | - |
 | DTE/Documento/Encabezado | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Identificacion y Totales del Documento | - |
 | DTE/Documento/Encabezado/IdDoc | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Identificacion del DTE | - |
-| DTE/Documento/Encabezado/IdDoc/TipoDTE | SiiDte:DTEType | Sí | 1..1 | xs:positiveInteger | - | - | - | 56 | Tipo de DTE (Nota de Debito Electronica) | Tipo específico documentado: 56 = Nota de Debito Electronica |
+| DTE/Documento/Encabezado/IdDoc/TipoDTE | SiiDte:DTEType | Sí | 1..1 | xs:positiveInteger | - | - | - | 34 | Tipo de DTE (Factura Electronica Exenta No Afecta) | Tipo específico documentado: 34 = Factura Electronica Exenta No Afecta |
 | DTE/Documento/Encabezado/IdDoc/Folio | SiiDte:FolioType | Sí | 1..1 | xs:positiveInteger | - | - | - | - | [DTE choice opción 1: Documento] Folio del Documento Electronico | totalDigits=10; Folio de DTE - 10 digitos |
 | DTE/Documento/Encabezado/IdDoc/FchEmis | SiiDte:FechaType | Sí | 1..1 | xs:date | 2000-01-01 | 2050-12-31 | - | - | [DTE choice opción 1: Documento] Fecha Emision Contable del DTE (AAAA-MM-DD) | Fecha entre 2000-01-01 y 2050-12-31 |
 | DTE/Documento/Encabezado/IdDoc/IndNoRebaja | anonymous | No | 0..1 | xs:positiveInteger | - | - | - | 1 | [DTE choice opción 1: Documento] Nota de Credito sin Derecho a Descontar Debito | - |
@@ -281,56 +281,3 @@ Campos extraídos desde `DTE_v10.xsd` + restricciones reutilizadas desde `SiiTyp
 | DTE/Documento/Comisiones/ValComNeto | SiiDte:MontoType | Sí | 1..1 | xs:nonNegativeInteger | - | - | - | - | [DTE choice opción 1: Documento] Valor Neto Comisiones y Otros Cargos | totalDigits=18; Monto de 18 digitos |
 | DTE/Documento/Comisiones/ValComExe | SiiDte:MontoType | Sí | 1..1 | xs:nonNegativeInteger | - | - | - | - | [DTE choice opción 1: Documento] Val. Comis. y Otros Cargos no Afectos o Exentos | totalDigits=18; Monto de 18 digitos |
 | DTE/Documento/Comisiones/ValComIVA | SiiDte:MontoType | No | 0..1 | xs:nonNegativeInteger | - | - | - | - | [DTE choice opción 1: Documento] Valor IVA Comisiones y Otros Cargos | totalDigits=18; Monto de 18 digitos |
-| DTE/Documento/TED | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Timbre Electronico de DTE | - |
-| DTE/Documento/TED/@version | anonymous | Sí | - | - | - | - | - | - | [DTE choice opción 1: Documento] | valor fijo: 1.0 |
-| DTE/Documento/TED/DD | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Datos Basicos de Documento | - |
-| DTE/Documento/TED/DD/RE | SiiDte:RUTType | Sí | 1..1 | xs:string | 3 | 10 | - | [0-9]+-([0-9]\|K) | [DTE choice opción 1: Documento] RUT Emisor | Rol Unico Tributario (99..99-X) |
-| DTE/Documento/TED/DD/TD | SiiDte:DTEType | Sí | 1..1 | xs:positiveInteger | - | - | - | 33, 34, 46, 52, 56, 61 | [DTE choice opción 1: Documento] Tipo DTE | Tipos de Documentos Tributarios Electronicos |
-| DTE/Documento/TED/DD/F | SiiDte:FolioType | Sí | 1..1 | xs:positiveInteger | - | - | - | - | [DTE choice opción 1: Documento] Folio DTE | totalDigits=10; Folio de DTE - 10 digitos |
-| DTE/Documento/TED/DD/FE | SiiDte:FechaType | Sí | 1..1 | xs:date | 2000-01-01 | 2050-12-31 | - | - | [DTE choice opción 1: Documento] Fecha Emision DTE en Formato AAAA-MM-DD | Fecha entre 2000-01-01 y 2050-12-31 |
-| DTE/Documento/TED/DD/RR | SiiDte:RUTType | Sí | 1..1 | xs:string | 3 | 10 | - | [0-9]+-([0-9]\|K) | [DTE choice opción 1: Documento] RUT Receptor | Rol Unico Tributario (99..99-X) |
-| DTE/Documento/TED/DD/RSR | anonymous | Sí | 1..1 | xs:string | 1 | 40 | - | - | [DTE choice opción 1: Documento] Razon Social Receptor | - |
-| DTE/Documento/TED/DD/MNT | xs:unsignedLong | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Monto Total DTE | - |
-| DTE/Documento/TED/DD/IT1 | anonymous | Sí | 1..1 | xs:string | 1 | 40 | - | - | [DTE choice opción 1: Documento] Descripcion Primer Item de Detalle | - |
-| DTE/Documento/TED/DD/CAF | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Codigo Autorizacion Folios | - |
-| DTE/Documento/TED/DD/CAF/@version | anonymous | Sí | - | - | - | - | - | - | [DTE choice opción 1: Documento] | valor fijo: 1.0 |
-| DTE/Documento/TED/DD/CAF/DA | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Datos de Autorizacion de Folios | - |
-| DTE/Documento/TED/DD/CAF/DA/RE | SiiDte:RUTType | Sí | 1..1 | xs:string | 3 | 10 | - | [0-9]+-([0-9]\|K) | [DTE choice opción 1: Documento] RUT Emisor | Rol Unico Tributario (99..99-X) |
-| DTE/Documento/TED/DD/CAF/DA/RS | anonymous | Sí | 1..1 | xs:string | 1 | 40 | - | - | [DTE choice opción 1: Documento] Razon Social Emisor | - |
-| DTE/Documento/TED/DD/CAF/DA/TD | SiiDte:DTEType | Sí | 1..1 | xs:positiveInteger | - | - | - | 33, 34, 46, 52, 56, 61 | [DTE choice opción 1: Documento] Tipo DTE | Tipos de Documentos Tributarios Electronicos |
-| DTE/Documento/TED/DD/CAF/DA/RNG | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Rango Autorizado de Folios | - |
-| DTE/Documento/TED/DD/CAF/DA/RNG/D | SiiDte:FolioType | Sí | 1..1 | xs:positiveInteger | - | - | - | - | [DTE choice opción 1: Documento] Folio Inicial (Desde) | totalDigits=10; Folio de DTE - 10 digitos |
-| DTE/Documento/TED/DD/CAF/DA/RNG/H | SiiDte:FolioType | Sí | 1..1 | xs:positiveInteger | - | - | - | - | [DTE choice opción 1: Documento] Folio Final (Hasta) | totalDigits=10; Folio de DTE - 10 digitos |
-| DTE/Documento/TED/DD/CAF/DA/FA | SiiDte:FechaType | Sí | 1..1 | xs:date | 2000-01-01 | 2050-12-31 | - | - | [DTE choice opción 1: Documento] Fecha Autorizacion en Formato AAAA-MM-DD | Fecha entre 2000-01-01 y 2050-12-31 |
-| DTE/Documento/TED/DD/CAF/DA/RSAPK | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 1: RSAPK] Clave Publica RSA del Solicitante | - |
-| DTE/Documento/TED/DD/CAF/DA/RSAPK/M | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 1: RSAPK] Modulo RSA | - |
-| DTE/Documento/TED/DD/CAF/DA/RSAPK/E | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 1: RSAPK] Exponente RSA | - |
-| DTE/Documento/TED/DD/CAF/DA/DSAPK | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 2: DSAPK] Clave Publica DSA del Solicitante | - |
-| DTE/Documento/TED/DD/CAF/DA/DSAPK/P | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 2: DSAPK] Modulo Primo | - |
-| DTE/Documento/TED/DD/CAF/DA/DSAPK/Q | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 2: DSAPK] Entero Divisor de P - 1 | - |
-| DTE/Documento/TED/DD/CAF/DA/DSAPK/G | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 2: DSAPK] Entero f(P, Q) | - |
-| DTE/Documento/TED/DD/CAF/DA/DSAPK/Y | xs:base64Binary | Sí | 1..1 | - | - | - | - | - | [DTE/Documento/TED/DD/CAF/DA choice opción 2: DSAPK] G**X mod P | - |
-| DTE/Documento/TED/DD/CAF/DA/IDK | xs:long | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Identificador de Llave | - |
-| DTE/Documento/TED/DD/CAF/FRMA | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Firma Digital (RSA) del SII Sobre DA | - |
-| DTE/Documento/TED/DD/TSTED | SiiDte:FechaHoraType | Sí | 1..1 | xs:dateTime | 2000-01-01T00:00:00 | 2050-12-31T23:59:59 | - | - | [DTE choice opción 1: Documento] TimeStamp de Generacion del Timbre | FechaType + hora entre 00:00 y 23:59; |
-| DTE/Documento/TED/FRMT | anonymous | Sí | 1..1 | - | - | - | - | - | [DTE choice opción 1: Documento] Valor de Firma Digital sobre DD | - |
-| DTE/Documento/TmstFirma | SiiDte:FechaHoraType | Sí | 1..1 | xs:dateTime | 2000-01-01T00:00:00 | 2050-12-31T23:59:59 | - | - | [DTE choice opción 1: Documento] Fecha y Hora en que se Firmo Digitalmente el Documento AAAA-MM-DDTHH:MI:SS | FechaType + hora entre 00:00 y 23:59; |
-| DTE/Signature | xmldsig:SignatureType | Sí | 1..1 | - | - | - | - | - | Firma Digital sobre Documento \| Firma Digital sobre Documento | - |
-| DTE/Signature/SignedInfo | anonymous | Sí | 1..1 | - | - | - | - | - | Descripcion de la Informacion Firmada y del Metodo de Firma | - |
-| DTE/Signature/SignedInfo/CanonicalizationMethod | anonymous | Sí | 1..1 | - | - | - | - | - | Algoritmo de Canonicalizacion | - |
-| DTE/Signature/SignedInfo/CanonicalizationMethod/@Algorithm | ds:anyURI | Sí | - | - | - | - | - | - | - | valor fijo: http://www.w3.org/TR/2001/REC-xml-c14n-20010315 |
-| DTE/Signature/SignedInfo/SignatureMethod | anonymous | Sí | 1..1 | - | - | - | - | - | Algoritmo de Firma | - |
-| DTE/Signature/SignedInfo/SignatureMethod/@Algorithm | anonymous | Sí | - | ds:anyURI | - | - | - | http://www.w3.org/2000/09/xmldsig#rsa-sha1, http://www.w3.org/2000/09/xmldsig#dsa-sha1 | - | - |
-| DTE/Signature/SignedInfo/Reference | anonymous | Sí | 1..1 | - | - | - | - | - | Referencia a Elemento Firmado | - |
-| DTE/Signature/SignedInfo/Reference/@URI | ds:anyURI | Sí | - | - | - | - | - | - | - | - |
-| DTE/Signature/SignedInfo/Reference/Transforms | anonymous | No | 0..1 | - | - | - | - | - | Algoritmo de Transformacion | - |
-| DTE/Signature/SignedInfo/Reference/Transforms/Transform | anonymous | Sí | 1..1 | - | - | - | - | - | - | - |
-| DTE/Signature/SignedInfo/Reference/Transforms/Transform/@Algorithm | ds:anyURI | Sí | - | - | - | - | - | - | - | - |
-| DTE/Signature/SignedInfo/Reference/DigestMethod | anonymous | Sí | 1..1 | - | - | - | - | - | Algoritmo de Digest | - |
-| DTE/Signature/SignedInfo/Reference/DigestMethod/@Algorithm | ds:anyURI | Sí | - | - | - | - | - | - | - | valor fijo: http://www.w3.org/2000/09/xmldsig#sha1 |
-| DTE/Signature/SignedInfo/Reference/DigestValue | ds:base64Binary | Sí | 1..1 | - | - | - | - | - | Valor de Digest | - |
-| DTE/Signature/SignatureValue | ds:base64Binary | Sí | 1..1 | - | - | - | - | - | Valor de la Firma Digital | - |
-| DTE/Signature/KeyInfo | anonymous | Sí | 1..1 | - | - | - | - | - | Informacion de Claves Publicas y Certificado | - |
-| DTE/Signature/KeyInfo/KeyValue | anonymous | Sí | 1..1 | - | - | - | - | - | - | - |
-| DTE/Signature/KeyInfo/X509Data | anonymous | Sí | 1..1 | - | - | - | - | - | Informacion del Certificado Publico | - |
-| DTE/Signature/KeyInfo/X509Data/X509Certificate | ds:base64Binary | Sí | 1..1 | - | - | - | - | - | Certificado Publico | - |
