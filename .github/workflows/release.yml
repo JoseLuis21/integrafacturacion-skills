@@ -1,6 +1,9 @@
 name: Release
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       bump:
@@ -31,7 +34,20 @@ jobs:
         run: |
           set -euo pipefail
 
-          BUMP="${{ inputs.bump }}"
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            BUMP="${{ inputs.bump }}"
+          else
+            COMMITS="$(git log -20 --format=%s)"
+
+            if echo "${COMMITS}" | grep -qi '\[major\]'; then
+              BUMP="major"
+            elif echo "${COMMITS}" | grep -qi '\[minor\]'; then
+              BUMP="minor"
+            else
+              BUMP="patch"
+            fi
+          fi
+
           LATEST_TAG="$(git tag --list 'v*' --sort=-version:refname | head -n 1)"
 
           if [[ -z "${LATEST_TAG}" ]]; then
@@ -68,6 +84,7 @@ jobs:
           fi
 
           {
+            echo "bump=${BUMP}"
             echo "latest_tag=${LATEST_TAG}"
             echo "next_tag=${NEXT_TAG}"
           } >> "$GITHUB_OUTPUT"

@@ -25,13 +25,14 @@ npx skills update
 
 ## Releases
 
-El repo incluye un workflow manual en GitHub Actions para crear versiones con tags semánticos y GitHub Releases.
+El repo incluye un workflow en GitHub Actions para crear versiones con tags semánticos y GitHub Releases automáticamente cuando haces push a `main`.
 
 Uso:
 
-1. Ve a `Actions > Release`
-2. Ejecuta `Run workflow`
-3. Elige el tipo de bump: `patch`, `minor` o `major`
+1. Haz push a `main`
+2. El workflow crea una release automáticamente
+3. Por defecto hace bump `patch`
+4. Si un commit incluye `[minor]` o `[major]`, usa ese bump para la versión siguiente
 
 El workflow:
 
@@ -39,6 +40,8 @@ El workflow:
 - calcula la siguiente versión
 - crea y empuja el nuevo tag
 - genera un GitHub Release con notas basadas en los commits desde la versión anterior
+
+También puedes ejecutarlo manualmente desde `Actions > Release` si quieres forzar el bump.
 
 ## Qué incluye
 
