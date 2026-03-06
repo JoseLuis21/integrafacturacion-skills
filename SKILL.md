@@ -1,6 +1,6 @@
 ---
 name: integrafacturacion-skills
-description: Ayuda a trabajar con la API de integrafacturacion.cl. Usa esta skill cuando el usuario quiera emitir, modificar, reprocesar o consultar DTEs, cargar CAF, generar PDFs, gestionar empresas o certificados, o cuando pida armar payloads, endpoints, headers o ejemplos para IntegraFacturacion e integración con SII. Actívala también si el usuario menciona tipos DTE chilenos como 33, 34, 39, 41, 43, 46, 52, 56 o 61, aunque no diga explícitamente "skill" ni "integrafacturacion.cl".
+description: Ayuda a trabajar con la API de integrafacturacion.cl. Usa esta skill cuando el usuario quiera emitir, modificar, reprocesar o consultar DTEs, cargar CAF, generar PDFs, gestionar empresas o certificados, o cuando pida armar payloads, endpoints, headers o ejemplos para IntegraFacturacion e integración con SII. Actívala también si el usuario menciona tipos DTE chilenos como 33, 34, 39, 41, 46, 52, 56 o 61, aunque no diga explícitamente "skill" ni "integrafacturacion.cl".
 ---
 
 # IntegraFacturacion
@@ -48,7 +48,6 @@ Usa `references/documentos.md` para mapear:
 - `34` factura exenta
 - `39` boleta electrónica
 - `41` boleta exenta
-- `43` liquidación factura
 - `46` factura de compra
 - `52` guía de despacho
 - `56` nota de débito
@@ -148,7 +147,6 @@ Si necesitas profundidad de campos SII, consulta directamente estos archivos del
 - `source-md/DTE_34_Factura_Electronica_Exenta_No_Afecta.md`
 - `source-md/BOLETA_39_Boleta_Electronica.md`
 - `source-md/BOLETA_41_Boleta_Exenta_Electronica.md`
-- `source-md/DTE_43_Liquidacion_Factura_Electronica.md`
 - `source-md/DTE_46_Factura_de_Compra_Electronica.md`
 - `source-md/DTE_52_Guia_de_Despacho_Electronica.md`
 - `source-md/DTE_56_Nota_de_Debito_Electronica.md`

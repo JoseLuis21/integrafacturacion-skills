@@ -15,6 +15,14 @@ Puedes instalar la skill directamente desde GitHub con:
 npx skills add https://github.com/JoseLuis21/integrafacturacion-skills
 ```
 
+## Actualización
+
+Puedes actualizar la skill instalada con:
+
+```bash
+npx skills update
+```
+
 ## Qué incluye
 
 - `SKILL.md`: instrucciones principales de la skill
@@ -45,7 +53,6 @@ Tipos cubiertos en esta primera versión:
 - `34` Factura Electrónica Exenta
 - `39` Boleta Electrónica
 - `41` Boleta Exenta Electrónica
-- `43` Liquidación Factura Electrónica
 - `46` Factura de Compra Electrónica
 - `52` Guía de Despacho Electrónica
 - `56` Nota de Débito Electrónica

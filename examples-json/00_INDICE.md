@@ -17,8 +17,6 @@ Criterios usados:
 - `DTE_33_Factura_Electronica_mixto_afecto_exento.json`
 - `DTE_33_Factura_Electronica_solo_afecto.json`
 - `DTE_34_Factura_Electronica_Exenta.json`
-- `DTE_43_Liquidacion_Factura_Electronica_mixto_afecto_exento.json`
-- `DTE_43_Liquidacion_Factura_Electronica_solo_afecto.json`
 - `DTE_46_Factura_de_Compra_Electronica_mixto_afecto_exento.json`
 - `DTE_46_Factura_de_Compra_Electronica_solo_afecto.json`
 - `DTE_52_Guia_de_Despacho_Electronica_mixto_afecto_exento.json`
