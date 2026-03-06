@@ -7,6 +7,14 @@ Skill para ayudar a integrar [`integrafacturacion.cl`](https://api.integrafactur
 - empresas, certificados, PDFs, cesiones y acuse de recibo
 - validación de payloads usando la estructura SII disponible en este repo
 
+## Instalación
+
+Puedes instalar la skill directamente desde GitHub con:
+
+```bash
+npx skills add https://github.com/JoseLuis21/integrafacturacion-skills
+```
+
 ## Qué incluye
 
 - `SKILL.md`: instrucciones principales de la skill
